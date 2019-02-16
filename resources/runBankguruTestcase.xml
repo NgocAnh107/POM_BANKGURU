@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="BankGuru" parallel="false">
+<!-- <suite name="BankGuru" parallel="false"> -->
+ <suite name="BankGuru" parallel="test" thread-count="3">  <!-- chạy song song 1 lúc -->
   <test name="Run on Firefox">
+  <parameter name="browser" value="firefox"></parameter>
     <classes>
-      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem"/>
+    <!--   <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem"/> -->
+      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem_Level3_PageObject"/>
     </classes>
   </test> 
+  
+ <!--  <test name="Run on Chrome">
+  <parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem"/>
+      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem_Level2_ApplyAbstractPage"/>
+    </classes>
+  </test> 
+  
+  <test name="Run on Chrome headless">
+  <parameter name="browser" value="chromeheadless"></parameter>
+    <classes>
+      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem"/>
+      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem_Level2_ApplyAbstractPage"/>
+    </classes>
+  </test>  -->
 </suite> 

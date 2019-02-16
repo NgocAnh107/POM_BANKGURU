@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//actions/PageObjects/HomePageObject.java=UTF-8
+encoding//actions/PageObjects/LoginPageObject.java=UTF-8
+encoding//actions/PageObjects/RegisterPageObject.java=UTF-8
+encoding//actions/commons/AbstractPage.java=UTF-8
+encoding//actions/commons/AbstractTest.java=UTF-8
+encoding//interfaces/PageUI/LoginPageUI.java=UTF-8
