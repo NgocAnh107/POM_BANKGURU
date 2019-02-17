@@ -290,8 +290,37 @@ public class AbstractPage {
 		clickToElement(driver, AbstractPageUI.NEW_DEPOSIT_LINK);
 		return PageFactoryManager.getDepositPage(driver);
 	}
-	   
+	public void waitToElementVisible(WebDriver driver, String locator, String...dynamicValue ) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		By byLocator = By.xpath(locator);
+		WebDriverWait waitEplixit = new WebDriverWait(driver, 30);
+		waitEplixit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));
+		
+	}
+	private void clickButton(WebDriver driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);		
+		driver.findElement(By.xpath(locator)).click();
+		
+	}
+	 //dynamiclocator
+	 public AbstractPage openDynamicPage(WebDriver driver, String pageName) {
+		 waitToElementVisible(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
+			clickButton(driver, AbstractPageUI.DYNAMIC_LINK , pageName);
+			switch(pageName) {
+			case "New Customer":
+				return PageFactoryManager.getNewCustomerPage(driver);
+			case "Account Customer":
+				return PageFactoryManager.getNewAccountPage(driver);
+			case "Deposit":
+				return PageFactoryManager.getDepositPage(driver);
+			default:
+				return PageFactoryManager.getHomePage(driver);
+			}
 	 
-	 
+	 }
+
+	
+
+
 
 }
