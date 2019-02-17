@@ -25,15 +25,16 @@ public class LoginPageObject extends AbstractPage {
 		senkeyToElement(driver, LoginPageUI.USERID_TEXTBOX, pass);
 	}
    
-   public void clickToLoginButton() {
+   public HomePageObject clickToLoginButton() {
 	   waitToElementVisible(driver, LoginPageUI.LOGIN_BUTTON);
 	   clickButton(driver, LoginPageUI.LOGIN_BUTTON);
+	   return PageFactoryManager.getHomePage(driver);
 	}
    
-   public void clickToHereLink() {
+   public RegisterPageObject clickToHereLink() {
 	   waitToElementVisible(driver, LoginPageUI.HERE_LINK);
 	   clickButton(driver, LoginPageUI.HERE_LINK);
-		
+		return PageFactoryManager.getRegisterPage(driver);
   	}
    public String getLoginURL() {
 	   return getCurrentURL(driver);

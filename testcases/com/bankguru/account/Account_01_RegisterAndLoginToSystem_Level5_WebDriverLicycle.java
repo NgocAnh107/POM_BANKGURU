@@ -2,8 +2,12 @@ package com.bankguru.account;
 
 import org.testng.annotations.Test;
 
+import PageObjects.DepositPageObject;
+import PageObjects.FundTransferPageObject;
 import PageObjects.HomePageObject;
 import PageObjects.LoginPageObject;
+import PageObjects.NewAccountPageObject;
+import PageObjects.NewCustomerPageObject;
 import PageObjects.RegisterPageObject;
 import commons.AbstractPage;
 import commons.AbstractTest;
@@ -22,14 +26,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Account_01_RegisterAndLoginToSystem_Level3_PageObject extends AbstractTest {
-	private WebDriver driver;
-	private String email, userID, password, loginUrl;
-
-	private HomePageObject homePage;
-	private LoginPageObject loginPage ; 
-	private RegisterPageObject registerPage;
-	 @Parameters("browser")
+public class Account_01_RegisterAndLoginToSystem_Level5_WebDriverLicycle extends AbstractTest {
+	
+ @Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		 driver = openMultiBrowser(browserName);
@@ -43,32 +42,45 @@ public class Account_01_RegisterAndLoginToSystem_Level3_PageObject extends Abstr
 	 @Test
 	  public void TC_01_RegisterToSystem() {
 		 loginUrl = loginPage.getLoginURL();
-		 loginPage.clickToHereLink();
-		 registerPage = new RegisterPageObject(driver);
+		 registerPage = loginPage.clickToHereLink();
+		 //registerPage = new RegisterPageObject(driver);
 		 registerPage.inputToEmailIDTextbox(email);
 		 registerPage.clickToSubmitButton();
 		 userID = registerPage.getUserIDText();
 		 System.out.println("id" + userID);
 		 password =registerPage.getPasswordText();
-		 System.out.println("id" + password);
+		 System.out.println("pass" + password);
 		 registerPage.openLoginPage(loginUrl);
 				 
 	  }
 	
   @Test
   public void TC_02_LoginWithAboveInformation() {
-	  registerPage.openLoginPage(loginUrl);
+	  loginPage = registerPage.openLoginPage(loginUrl);
 	  
 	 //Open login url -? vaof loginpage lai
-	  loginPage = new LoginPageObject(driver);
+	 // loginPage = new LoginPageObject(driver);
 	  loginPage.inputToUserIDTextBox(userID);
 	  loginPage.inputToPasswordTextBox(password);
-	  loginPage.clickToLoginButton();
+	  homePage = loginPage.clickToLoginButton();
 	  
 	  //click button -> vaa trang homepage
-	  homePage = new HomePageObject(driver);
+	 // homePage = new HomePageObject(driver);
 	  Assert.assertTrue(homePage.isHomePageDisplayed());
   
+  }
+  @Test
+  public void TC_03_OpenMultiplePage() {
+	  newCustomerPage= homePage.openNewCustomerPage(driver);
+	  Assert.assertTrue(newCustomerPage.isNewCustomerPageDisplay());
+	  newAccountPage = newCustomerPage.openNewAccountPage(driver);
+	  Assert.assertTrue(newAccountPage.isNewAccountPageDisplay());
+	 depositPage = newAccountPage.openDepositPage(driver);
+	 Assert.assertTrue(depositPage.isDepositDisplay());
+	
+	  
+	  
+	  
   }
   
 
@@ -76,11 +88,16 @@ public class Account_01_RegisterAndLoginToSystem_Level3_PageObject extends Abstr
   public void afterClass() {
 	
   }
-  
-  public int randomNumber() {
-	  Random random = new Random();
-	  int number = random.nextInt(999999);
-	  return number;
-  }
+  private WebDriver driver;
+	private String email, userID, password, loginUrl;
 
+	private HomePageObject homePage;
+	private LoginPageObject loginPage ; 
+	private RegisterPageObject registerPage;
+	private NewCustomerPageObject newCustomerPage;
+	private NewAccountPageObject newAccountPage;
+	private DepositPageObject depositPage;
+	private FundTransferPageObject fundTransferPage;
+  
+  
 }

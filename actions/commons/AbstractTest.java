@@ -1,5 +1,6 @@
 package commons;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -28,5 +29,10 @@ public class AbstractTest {
 		driver.manage().window().maximize();
 		return driver; // để map với driver bên testcase
 	}
+	public int randomNumber() {
+		  Random random = new Random();
+		  int number = random.nextInt(999999);
+		  return number;
+	  }
 
 }

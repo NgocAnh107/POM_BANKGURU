@@ -12,6 +12,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import PageObjects.DepositPageObject;
+import PageObjects.NewAccountPageObject;
+import PageObjects.NewCustomerPageObject;
+import PageObjects.PageFactoryManager;
+import PageUI.AbstractPageUI;
+import PageUI.HomePageUI;
+import PageUI.NewAccountPageUI;
+import PageUI.NewCustomerPageUI;
+
 public class AbstractPage {
 	
 	//------WEB BROWSER------------
@@ -71,6 +80,10 @@ public class AbstractPage {
 	public void clickButton(WebDriver driver, String locator) {
 		driver.findElement(By.xpath(locator)).click();
 	}
+	public void clickToElement(WebDriver driver, String locator) {
+		driver.findElement(By.xpath(locator)).click();
+	}
+
 	
 	public void senkeyToElement(WebDriver driver, String locator, String value) {
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -259,6 +272,23 @@ public class AbstractPage {
 		By byLocator = By.xpath(locator);
 		WebDriverWait waitEplixit = new WebDriverWait(driver, 30);
 		waitEplixit.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));	
+	}
+	
+	public NewCustomerPageObject openNewCustomerPage(WebDriver driver) {
+		waitToElementVisible(driver, AbstractPageUI.NEW_CUSTOMER_LINK);
+		clickButton(driver, AbstractPageUI.NEW_CUSTOMER_LINK);
+		return PageFactoryManager.getNewCustomerPage(driver);
+	}
+	
+	public NewAccountPageObject openNewAccountPage(WebDriver driver) {
+		waitToElementVisible(driver, AbstractPageUI.NEW_ACCOUNT_LINK);
+		clickButton(driver, AbstractPageUI.NEW_ACCOUNT_LINK);
+		return PageFactoryManager.getNewAccountPage(driver);
+	}
+	public DepositPageObject openDepositPage(WebDriver driver) {
+		waitToElementVisible(driver, AbstractPageUI.NEW_DEPOSIT_LINK);
+		clickToElement(driver, AbstractPageUI.NEW_DEPOSIT_LINK);
+		return PageFactoryManager.getDepositPage(driver);
 	}
 	   
 	 
