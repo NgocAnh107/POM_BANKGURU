@@ -309,7 +309,7 @@ public class AbstractPage {
 			switch(pageName) {
 			case "New Customer":
 				return PageFactoryManager.getNewCustomerPage(driver);
-			case "Account Customer":
+			case "New Account":
 				return PageFactoryManager.getNewAccountPage(driver);
 			case "Deposit":
 				return PageFactoryManager.getDepositPage(driver);

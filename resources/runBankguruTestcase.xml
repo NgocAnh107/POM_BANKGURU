@@ -5,7 +5,7 @@
   <parameter name="browser" value="firefox"></parameter>
     <classes>
     <!--   <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem"/> -->
-      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem_Level3_PageObject"/>
+      <class name="com.bankguru.account.Account_01_RegisterAndLoginToSystem_Level6_DynamicLocator_RestParameter"/>
     </classes>
   </test> 
   

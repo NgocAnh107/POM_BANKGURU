@@ -13,12 +13,9 @@ public class NewAccountPageObject extends AbstractPage {
 	}
 
 	public boolean isNewAccountPageDisplay() {
-		waitToElementVisible(driver, NewCustomerPageUI.NEW_CUSTOMER_TEXT);
-		return isControlDisplay(driver, NewCustomerPageUI.NEW_CUSTOMER_TEXT);
+		waitToElementVisible(driver, NewAccountPageUI.NEW_ACCOUNT_TEXT);
+		return isControlDisplay(driver, NewAccountPageUI.NEW_ACCOUNT_TEXT);
 	}
-	public DepositPageObject openDepositPage() {
-		waitToElementVisible(driver, NewAccountPageUI.NEW_DEPOSIT_LINK);
-		clickToElement(driver, NewAccountPageUI.NEW_DEPOSIT_LINK);
-		return PageFactoryManager.getDepositPage(driver);
-	}
+
+
 }

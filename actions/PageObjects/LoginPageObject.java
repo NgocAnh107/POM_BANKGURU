@@ -22,7 +22,7 @@ public class LoginPageObject extends AbstractPage {
 	
    public void inputToPasswordTextBox(String pass) {
 	   waitToElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.USERID_TEXTBOX, pass);
+		senkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, pass);
 	}
    
    public HomePageObject clickToLoginButton() {

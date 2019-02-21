@@ -51,13 +51,13 @@ public class Account_01_RegisterAndLoginToSystem_Level3_PageObject extends Abstr
 		 System.out.println("id" + userID);
 		 password =registerPage.getPasswordText();
 		 System.out.println("id" + password);
-		 registerPage.openLoginPage(loginUrl);
+		// registerPage.openLoginPage(loginUrl);
 				 
 	  }
 	
   @Test
   public void TC_02_LoginWithAboveInformation() {
-	  registerPage.openLoginPage(loginUrl);
+	 registerPage.openLoginPage(loginUrl);
 	  
 	 //Open login url -? vaof loginpage lai
 	  loginPage = new LoginPageObject(driver);
